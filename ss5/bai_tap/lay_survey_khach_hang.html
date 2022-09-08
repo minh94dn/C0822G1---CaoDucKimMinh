@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    td,th {
+        text-align: center;
+        border: 1px solid #dddddd;
+    }
+    table {
+        border-collapse: collapse ;
+    }
+    tr:nth-child(odd) {
+        background-color: #f1ecec;
+    }
+
+</style>
+<body>  <form action="/action_page.php">
+    <h1>Market Research Survey</h1>
+<pre>Please take a few moments to complete this satisfaction survey</pre>
+<h4>What is your age range?</h4>
+<select style="width: 500px" >
+    <option value="age">18-24</option>
+    <option>25-34</option>
+    <option>35-50</option>
+    <option>50+</option>
+</select>
+<h4>What is your yearly income range?</h4>
+<select style="width: 500px" >
+    <option value="age">$0-$25000</option>
+    <option>$25001-$50000</option>
+    <option>$50001-$100000</option>
+    <option>$100000+</option>
+</select>
+<h4>Gender Identity</h4>
+    <label><input name="gerden" value="Male" type="radio"/> Male</label> <br/>
+    <label><input name="gerden" type="radio"/> Female</label> <br/>
+    <label><input name="gerden" type="radio"/> Nonbinary</label> <br/>
+    <label><input name="gerden" type="radio"/> Other</label><br>
+&emsp; <input type="text" size="20px"/>
+<h4>Which of the following products have your purchased in the last 2 months. Please chech all that apply</h4>
+    <label><input name="gerden" value="Product" type="checkbox"/> Product 1</label> <br/>
+    <label><input name="gerden" type="checkbox"/> Product 2</label> <br/>
+    <label><input name="gerden" type="checkbox"/> Product 3</label> <br/>
+<h4>How often would you use our new product</h4>
+    <label><input name="day" value="Male" type="radio"/> Daily</label> <br/>
+    <label><input name="day" type="radio"/> Weekly</label> <br/>
+    <label><input name="day" type="radio"/> Monthly</label> <br/>
+ <h4>What ofter would you use our new product?</h4>
+$ <input type="text" size="6px"/>-<input type="text" size="1px"/><br>
+&ensp; <span>Dollars</span>&emsp;&emsp;<span>Cents</span>
+<h4>What features would you like tp see in the new product</h4>
+    <textarea cols="100px" rows="10px" type="text"></textarea>
+<p>Please rate your level of agreement with the following statements</p>
+<table>
+    <tr>
+        <th></th>
+        <th>Strongly Disagree</th>
+        <th>Disagree</th>
+        <th>Agree</th>
+        <th>Strongly Agree</th>
+    </tr>
+    <tr>
+        <td><strong>Our products are priced fairly</strong></td>
+        <td><input type="radio"><br>&nbsp;1</td>
+        <td><input type="radio"><br>&nbsp;2</td>
+        <td><input type="radio"><br>&nbsp;3</td>
+        <td><input type="radio"><br>&nbsp;4</td>
+    </tr>
+    <tr>
+        <td><strong>Our products are high quality</strong></td>
+        <td><input type="radio"><br>&nbsp;1</td>
+        <td><input type="radio"><br>&nbsp;2</td>
+        <td><input type="radio"><br>&nbsp;3</td>
+        <td><input type="radio"><br>&nbsp;4</td>
+    </tr>
+    <tr>
+        <td><strong>You would recommend our product to a friend ỏ coworker</strong></td>
+        <td><input type="radio"><br>&nbsp;1</td>
+        <td><input type="radio"><br>&nbsp;2</td>
+        <td><input type="radio"><br>&nbsp;3</td>
+        <td><input type="radio"><br>&nbsp;4</td>
+    </tr>
+</table><br>
+
+    <input type="submit" value="Submit"/>
+
+</body>
+</html>
