@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input type="text" id="giaTri1">
+    <input type="text" id="giaTri2">
+</div>
+<br>
+<button onclick="tong()">Addition(+)</button>
+<button onclick="hieu()">Subtraction(-)</button>
+<button onclick="tich()">Multiplication(*)</button>
+<button onclick="thuong()">Division(/)</button>
+<p id="ketQua"></p>
+</body>
+<script>
+
+    function tong() {
+        let value1 = +document.getElementById('giaTri1').value;
+        let value2 = +document.getElementById('giaTri2').value;
+        let tong = value1 + value2;
+        document.getElementById('ketQua').innerText = "Kết quả là : " + tong;
+    }
+
+    function hieu() {
+        let value1 = +document.getElementById('giaTri1').value;
+        let value2 = +document.getElementById('giaTri2').value;
+        let hieu = value1 - value2;
+        document.getElementById('ketQua').innerText = "Kết quả là : " + hieu;
+    }
+
+    function tich() {
+        let value1 = +document.getElementById('giaTri1').value;
+        let value2 = +document.getElementById('giaTri2').value;
+        let tich = value1 * value2;
+        document.getElementById('ketQua').innerText = "Kết quả là : " + tich;
+    }
+
+    function thuong() {
+        let value1 = +document.getElementById('giaTri1').value;
+        let value2 = +document.getElementById('giaTri2').value;
+        let thuong = value1 / value2;
+        document.getElementById('ketQua').innerText = "Kết quả là : " + thuong;
+    }
+
+
+</script>
+</html>

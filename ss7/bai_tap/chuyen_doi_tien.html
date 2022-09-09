@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>From Currency</th>
+        <th>To Currency</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td><input type="text" id="giaTri" size="20px"></td>
+        <td><select id="select1">
+            <option value="a">VND</option>
+            <option value="b">USD</option>
+        </select>
+        </td>
+        <td><select id="select2">
+            <option value="a">VND</option>
+            <option value="b">USD</option>
+        </select></td>
+        <td>
+            <button onclick="kq()">Convert</button>
+        </td>
+    </tr>
+</table>
+<p id="ketQua"></p>
+<script>
+    function kq() {
+        let nhapGiaTri = document.getElementById('giaTri').value;
+        let select1 = document.getElementById('select1').value;
+        let select2 = document.getElementById('select2').value;
+        let vnd = nhapGiaTri / 23000;
+        let doLa = nhapGiaTri * 23000;
+
+
+        if (select1 == "a" && select2 == "a") {
+            document.getElementById('ketQua').innerText = "Kết quả là: " + nhapGiaTri + " " + "VND";
+        } else if (select1 == "b" && select2 == "b") {
+            document.getElementById('ketQua').innerText = "Kết quả là: " + nhapGiaTri + " " + "$";
+        } else if (select1 == "a" && select2 == "b") {
+            document.getElementById('ketQua').innerText = "Kết quả là: " + vnd + " " + "$";
+        } else {
+            document.getElementById('ketQua').innerText = "Kết quả là: " + doLa + " " + "$";
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
