@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = prompt('Nhập thu nhập của một năm (triệu đồng)');
+    if (a > 384) {
+        let thue = a * 20 / 100;
+        alert('Tiền thuế phải trả là: ' + thue + ' triệu đồng');
+
+    } else if (a > 216) {
+        let thue = a * 15 / 100;
+        alert('Tiền thuế phải trả là: ' + thue + ' triệu đồng');
+
+    } else if (a > 120) {
+        let thue = a * 10 / 100;
+        alert('Tiền thuế phải trả là: ' + thue + ' triệu đồng');
+    } else if (a > 60) {
+        let thue = a * 5 / 100;
+        alert('Tiền thuế phải trả là: ' + thue + ' triệu đồng');
+    } else {
+        alert('Không phải nộp thuế')
+    }
+</script>
+</html>

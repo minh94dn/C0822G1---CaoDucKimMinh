@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let diem_kien_tra = +prompt('Nhập điểm bài kiểm tra');
+    let diem_giua_ky = +prompt('Nhập điểm bài kiểm tra');
+    let diem_cuoi_ky = +prompt('Nhập điểm bài kiểm tra');
+    let diem_trung_binh = (diem_kien_tra + 2 * diem_giua_ky + 3 * diem_cuoi_ky) / 6;
+    if (diem_trung_binh >= 8) {
+        alert('Học sinh đạt học sinh Giỏi');
+    } else if (diem_trung_binh >= 6.5) {
+        alert('Học sinh đạt học sinh Khá');
+
+    } else if (diem_trung_binh >= 5) {
+        alert('HỌc sinh đạt học sinh Trung Bình');
+
+    } else if (diem_trung_binh > 3.5) {
+        alert('Học sinh đạt học sinh Yếu');
+
+
+    } else {
+        alert('Học sinh đạt học sinh Kém');
+    }
+</script>
+</html>

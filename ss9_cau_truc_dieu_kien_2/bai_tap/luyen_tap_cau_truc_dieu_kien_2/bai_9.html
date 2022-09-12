@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = +prompt('Nhập đồ dài cạnh thứ nhất');
+    let b = +prompt('Nhập đồ dài cạnh thứ hai');
+    let c = +prompt('Nhập đồ dài cạnh thứ ba');
+    if (a > 0 && b > 0 && c > 0) {
+        if (a + b > c) {
+            if (b + c > a) {
+                if (c + a > b) {
+                    alert('Đây chính là độ dài 3 cạnh của một tam giác');
+                } else {
+                    alert('Đây không phải là độ dài 3 cạnh của một tam giác');
+                }
+            } else {
+                alert('Đây không phải là độ dài 3 cạnh của một tam giác');
+            }
+        } else {
+            alert('Đây không phải là độ dài 3 cạnh của một tam giác');
+        }
+    } else {
+        alert('Đây không phải là độ dài 3 cạnh của một tam giác');
+    }
+</script>
+</html>

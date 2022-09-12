@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table {
+        border: 4px solid black;
+
+    }
+
+    td {
+        text-align: center;
+
+    }
+</style>
+<body>
+<table cellspacing="15px">
+    <tr>
+        <td colspan="4"><input type="text" id="window" style="color: blue"></td>
+    </tr>
+    <tr>
+        <td><input type="button" onclick="nhap(1)" value="1" style="color: blue"></td>
+        <td><input type="button" onclick="nhap(2)" value="2" style="color: blue"></td>
+        <td><input type="button" onclick="nhap(3)" value="3" style="color: blue"></td>
+        <td><input type="button" onclick="cong()" value="+" style="color: blue"></td>
+    </tr>
+    <tr>
+        <td><input type="button" onclick="nhap(4)" value="4" style="color: blue"></td>
+        <td><input type="button" onclick="nhap(5)" value="5" style="color: blue"></td>
+        <td><input type="button" onclick="nhap(6)" value="6" style="color: blue"></td>
+        <td><input type="button" onclick="tru()" value="-" style="color: blue"></td>
+    </tr>
+    <tr>
+        <td><input type="button" onclick="nhap(7)" value="7" style="color: blue"></td>
+        <td><input type="button" onclick="nhap(8)" value="8" style="color: blue"></td>
+        <td><input type="button" onclick="nhap(9)" value="9" style="color: blue"></td>
+        <td><input type="button" onclick="nhan()" value="x" style="color: blue"></td>
+    </tr>
+    <tr>
+        <td><input type="button" onclick="xoa()" value="C" style="color: blue"></td>
+        <td><input type="button" onclick="nhap(0)" value="0" style="color: blue"></td>
+        <td><input type="button" onclick="bang()" value="=" style="color: blue"></td>
+        <td><input type="button" onclick="chia()" value="/" style="color: blue"></td>
+    </tr>
+</table>
+<script>
+    function nhap(so) {
+        document.getElementById("window").value += so;
+    }
+
+    function cong() {
+        let str = document.getElementById("window").value;
+        document.getElementById("window").value = str + "+";
+
+    }
+
+    function tru() {
+        let str = document.getElementById("window").value;
+        document.getElementById("window").value = str + "-";
+    }
+
+    function nhan() {
+        let str = document.getElementById("window").value;
+        document.getElementById("window").value = str + "*";
+    }
+
+    function chia() {
+        let str = document.getElementById("window").value;
+        document.getElementById("window").value = str + "/";
+    }
+
+    function bang() {
+        let str = document.getElementById("window").value;
+        let ketQua = eval(str);
+        document.getElementById("window").value = ketQua;
+    }
+
+    function xoa() {
+        document.getElementById("window").value = "";
+
+    }
+</script>
+</body>
+</html>

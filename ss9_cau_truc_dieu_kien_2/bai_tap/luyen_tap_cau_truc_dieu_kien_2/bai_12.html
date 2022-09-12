@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let soThang = +prompt('Nhập số tháng muốn gửi');
+    let soTienBanDau = +prompt('Nhập số tiền ban đầu');
+    let r = +prompt('Nhập lãi suất hằng tháng');
+    let a = soTienBanDau * Math.pow((1 + r / 12), soThang);
+    alert('Số tiền nhận được là: ' + a + " VND");
+
+</script>
+</html>

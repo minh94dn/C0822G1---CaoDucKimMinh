@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = prompt('Nhập số phút đã gọi');
+    if (a > 10) {
+        let giaTien = a * 500;
+        alert('Cước phí điện thoại là: ' + giaTien + ' VND');
+
+    } else if (a > 8) {
+        let giaTien = a * 1000;
+        alert('Cước phí điện thoại là: ' + giaTien + ' VND');
+    } else if (a > 5) {
+        let giaTien = a * 1500;
+        alert('Cước phí điện thoại là: ' + giaTien + ' VND');
+    } else if (a > 2) {
+        let giaTien = a * 2000;
+        alert('Cước phí điện thoại là: ' + giaTien + ' VND');
+    } else {
+        let giaTien = a * 2500;
+        alert('Cước phí điện thoại là: ' + giaTien + ' VND');
+    }
+</script>
+</html>

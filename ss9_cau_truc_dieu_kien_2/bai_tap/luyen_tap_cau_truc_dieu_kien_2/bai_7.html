@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = prompt('Nhập giá trị của a');
+    let b = prompt('Nhập giá trị của b');
+    let c = prompt('Nhập giá trị của c');
+    let delTa = b * b - 4 * a * c;
+    if (delTa < 0) {
+        alert('Phương trình vô nghiệm');
+    } else if (delTa == 0) {
+        let nghiem = -b / 2 * a;
+        alert('Phương trình có nghiệm kép là: x1 = x2 =' + nghiem);
+    } else {
+        let nghiem_1 = (-b + Math.sqrt(delTa)) / 2;
+        let nghiem_2 = (-b - Math.sqrt(delTa)) / 2;
+        alert('Phương trinh có 2 nghiệm là:' + '\n x1 = ' + nghiem_1 + '\n x2 = ' + nghiem_2);
+    }
+</script>
+</html>

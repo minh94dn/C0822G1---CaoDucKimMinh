@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let soSanPham = +prompt("Nhập mức doanh thu bán hàng");
+    if (soSanPham > 10) {
+        let hoaHong = soSanPham * 20 / 100;
+        alert('Hoa hồng nhận được là: ' + hoaHong + ' sản phẩm');
+
+    } else if (soSanPham > 7) {
+        let hoaHong = soSanPham * 10 / 100;
+        alert('Hoa hồng nhận được là: ' + hoaHong + ' sản phẩm');
+
+    } else if (soSanPham > 4) {
+        let hoaHong = soSanPham * 5 / 100;
+        alert('Hoa hồng nhận được là: ' + hoaHong + ' sản phẩm');
+
+    } else {
+        alert('Không có hoa hồng')
+    }
+</script>
+</html>
