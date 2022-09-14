@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let soTienVay = +prompt("Nhập số tiền ban đàu muốn vay");
+    let soThang = +prompt("Nhập số tháng cần vay");
+    let n = +prompt("Nhập lãi suất của ngân hàng mỗi tháng");
+    let tienLai;
+    for (let i = 1; i <= soThang; i++) {
+        tienLai = soTienVay * n;
+        soTienVay = soTienVay + tienLai;
+    }
+    document.write("Tổng số tiền cả vốn và lãi là: " + soTienVay);
+</script>
+</html>
