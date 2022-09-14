@@ -8,17 +8,15 @@
 
 </body>
 <script>
+    let n = prompt("Nhập n là số các số đầu tiên trong dãy Fibonaci cần in");
     let a = 0;
     let b = 1;
     let total;
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= n; i++) {
+        document.write(a + "<br>");
         total = a + b;
         a = b;
         b = total;
-        if (a % 5 == 0) {
-            alert("Đây là số đầu tiên chia hết cho 5 trong dãy fibonacci: " + a);
-            break;
-        }
     }
 
 </script>

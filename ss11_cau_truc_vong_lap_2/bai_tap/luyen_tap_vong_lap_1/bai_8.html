@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<button onclick="choi()">Bắt đầu</button>
 </body>
+<script>
+
+    function choi() {
+        let n = +prompt("Số bạn muốn đoán trong khoảng lớn nhất là bao nhiêu?");
+        let a = Math.floor(Math.random() * n);
+        console.log(a);
+        let doanSo;
+        for (let i = 1; i <= 3; i++) {
+            doanSo = +prompt("Nhập số mà bạn muốn đoán: ");
+            if (doanSo == a) {
+                document.write("Chúc mừng bạn đã đoán trúng");
+                break;
+            } else if (doanSo > a) {
+                alert("Số bạn đoán lớn hơn");
+            } else {
+                alert("Số bạn đoán bé hơn");
+            }
+            if (i == 3) {
+                alert("Bạn đã hết lượt");
+            }
+        }
+    }
+</script>
 </html>

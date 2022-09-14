@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let n = +prompt("Nhập n là số các số nguyên tố đầu tiên cần in ra");
+    let demSoNguyenTo = 0;
+    let m = 2;
+    while (demSoNguyenTo < n) {
+        let count = 0;
+        for (let i = 2; i < m; i++) {
+            if (m % i == 0) {
+                count++;
+            }
+        }
+        if (count == 0) {
+            document.write(m + "<br>");
+            demSoNguyenTo++;
+        }
+        m++;
+    }
+</script>
 </body>
 </html>

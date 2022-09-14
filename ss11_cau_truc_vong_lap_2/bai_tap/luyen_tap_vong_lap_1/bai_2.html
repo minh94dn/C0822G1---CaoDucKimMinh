@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
 </body>
+<script>
+    let value;
+    do {
+        value = prompt("Nhập nhiệt độ");
+        if (value < 20) {
+            alert("Hãy tắng nhiệt độ lên");
+        }
+        if (value > 100) {
+            alert("Hãy giảm nhiệt độ lại ")
+        }
+    } while (value < 20 || value > 100);
+    alert("Thiệt độ ok");
+
+</script>
 </html>

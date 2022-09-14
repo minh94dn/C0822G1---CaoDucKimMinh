@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
 </body>
+<script>
+    let a = 0;
+    let b = 1;
+    let total = 0;
+    let tongDaySo = 0;
+    for (let i = 1; i <= 20; i++) {
+        document.write(a + "<br>");
+        tongDaySo += a;
+        total = a + b;
+        a = b;
+        b = total;
+    }
+    document.write("Tổng của 20 số đầu này là: " + tongDaySo);
+</script>
 </html>
