@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let count = 0;
+    let arr = [];
+    for (let i = 0; i < 10; i++) {
+        arr[i] = +prompt("Nhập số trong mảng");
+    }
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] >= 10) {
+            count++;
+            document.write(arr[i] + "<br>");
+        }
+    }
+    document.write("Có tất cả " + count + " số lớn 10 ở trong mảng");
+</script>
+</html>

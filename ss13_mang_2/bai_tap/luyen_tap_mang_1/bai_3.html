@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let n = +prompt("Nhập số phần tử có trong mảng");
+    let arrNumber = [];
+    for (let i = 0; i < n; i++) {
+        arrNumber[i] = +prompt("Nhập phần tử của mảng");
+    }
+    let max = arrNumber[0];
+    let index = 0;
+    let giaTriTrungBinh = 0;
+    for (let i = 0; i < arrNumber.length; i++) {
+        giaTriTrungBinh += arrNumber[i] / arrNumber.length;
+        if (arrNumber[i] > max) {
+            max = arrNumber[i];
+            index = i;
+        }
+    }
+    document.write("Giá trị lớn nhất trong mảng là: " + max + "<br>");
+    document.write("Giá trị trung bình trong mảng là: " + giaTriTrungBinh);
+</script>
+</html>

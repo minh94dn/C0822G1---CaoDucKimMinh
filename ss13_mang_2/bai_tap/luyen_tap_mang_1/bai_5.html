@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let n = prompt("Nhập số phần tử có trong mảng");
+    let arrNumber = [];
+    for (let i = 0; i < n; i++) {
+        arrNumber[i] = prompt("Nhập số phần tử của mảng");
+    }
+    document.write("Các phần tử có trong mảng là: " + arrNumber + "<br>");
+    let count = 0;
+    for (let i = 0; i < arrNumber.length; i++) {
+        if (arrNumber[i] < 0) {
+            count++;
+        }
+    }
+    document.write("Có " + count + " số nguyên âm ở trong mảng");
+</script>
+</html>

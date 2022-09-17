@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span>Nhập từ: </span>
+<input type="text" id="nhapTu">
+<button onclick="kiemTra()">Dịch</button>
+<div id="ketQua"></div>
+</body>
+<script>
+    let tiengAnh = ["apple", "english", "love"];
+    let tiengViet = ["quả táo", "tiếng anh", "yêu thương"];
+
+    function kiemTra() {
+        let dich = document.getElementById("nhapTu").value;
+        for (let i = 0; i < tiengAnh.length; i++) {
+            if (dich === tiengAnh[i]) {
+                document.getElementById("ketQua").innerHTML = tiengViet[i];
+                break;
+            } else {
+                document.getElementById("ketQua").innerHTML = "không tìm thấy từ này"
+            }
+        }
+    }
+</script>
+</html>

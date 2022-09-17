@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arrNumber = [];
+    for (let i = 0; i < 10; i++) {
+        arrNumber[i] = +prompt("Nhập các phần tử ở trong mảng");
+    }
+    document.write("Chuỗi ban đầu là: " + arrNumber + "<br>");
+    let nhapSo = +prompt("Nhập số để kiểm tra");
+    for (let i = 0; i < arrNumber.length; i++) {
+        if (nhapSo === arrNumber[i]) {
+            arrNumber.splice(i, 1);
+            arrNumber.push(0);
+        }
+    }
+    document.write("Chuỗi sau khi dịch chuyển là: " + arrNumber);
+</script>
+</html>

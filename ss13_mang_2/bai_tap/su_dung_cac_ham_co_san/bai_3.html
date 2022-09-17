@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapChu = prompt("Nhập chữ");
+    let UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let LOWER = "abcdefghijklmnopqrstuvwxyz";
+    let result = [];
+    document.write("Chuỗi ban đầu là: " + nhapChu + "<br>");
+    for (let i = 0; i < nhapChu.length; i++) {
+        if (UPPER.indexOf(nhapChu[i]) !== -1) {
+            result.push(nhapChu[i].toLowerCase());
+        } else if (LOWER.indexOf(nhapChu[i]) !== -1) {
+            result.push(nhapChu[i].toUpperCase());
+        } else {
+            result.push(nhapChu[i]);
+        }
+    }
+    document.write("Chuỗi sau khi chuyển là: " + result.join(''));
+</script>
+</html>

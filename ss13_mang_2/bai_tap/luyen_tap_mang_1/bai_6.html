@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arrNumber = [];
+    for (let i = 0; i < 10; i++) {
+        arrNumber[i] = +prompt("Nhập các phần tử ở trong mảng");
+    }
+    document.write(arrNumber + "<br>");
+    let nhapSo = +prompt("Nhập số để kiểm tra");
+    let check = false;
+    for (let i = 0; i < arrNumber.length; i++) {
+        if (nhapSo === arrNumber[i]) {
+            check = true;
+            document.write(nhapSo + " is in the array");
+            break;
+        }
+    }
+    if (check == false) {
+        document.write(nhapSo + " is not in the array");
+    }
+</script>
+</html>

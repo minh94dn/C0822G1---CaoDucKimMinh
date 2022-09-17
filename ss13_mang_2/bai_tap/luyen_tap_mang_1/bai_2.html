@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arrNumber = [];
+    for (let i = 0; i < 10; i++) {
+        arrNumber[i] = +prompt("Nhập số trong mảng");
+    }
+    let max = arrNumber[0];
+    let index = 0;
+    for (let i = 0; i < arrNumber.length; i++) {
+        if (arrNumber[i] > max) {
+            max = arrNumber[i];
+            index = i;
+        }
+    }
+    document.write("Giá trị lớn nhất trong mảng là: " + max + " và ở vị trí thứ " + index);
+</script>
+</html>

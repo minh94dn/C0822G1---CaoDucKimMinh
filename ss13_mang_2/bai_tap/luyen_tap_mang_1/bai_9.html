@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arrNumber1 = [];
+    for (let i = 0; i < 10; i++) {
+        arrNumber1[i] = +prompt("Nhập các phần tử ở trong mảng thứ nhất");
+    }
+    let arrNumber2 = [];
+    for (let i = 0; i < 10; i++) {
+        arrNumber2[i] = +prompt("Nhập các phần tử ở trong mảng thứ hai");
+    }
+    document.write("Chuỗi thứ nhất là: " + arrNumber1 + "<br>");
+    document.write("Chuỗi thứ hai là: " + arrNumber2 + "<br>");
+    let arrNumber = arrNumber1.concat(arrNumber2);
+    document.write("Chuỗi sau khi được nối là: " + arrNumber);
+</script>
+</html>
