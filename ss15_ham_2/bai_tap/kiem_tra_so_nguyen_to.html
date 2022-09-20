@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapSo = prompt("Nhập số cần kiểm tra");
+
+    function kiemTra(nhapSo) {
+        let count = 0;
+        if (nhapSo < 2) {
+            return false;
+        } else {
+            for (let i = 2; i < nhapSo; i++) {
+                if (nhapSo % i == 0) {
+                    count++;
+                }
+            }
+            if (count == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    let arr = [];
+    let arr1 = [];
+    for (let i = 0; i < nhapSo; i++) {
+        arr[i] = +prompt("Nhâp sso");
+        if (kiemTra(arr[i]) === true) {
+            arr1.push(arr[i]);
+        }
+    }
+    document.write("Các số nguyên tố có trong mảng là: " + arr1 + "<br>")
+</script>
+</html>

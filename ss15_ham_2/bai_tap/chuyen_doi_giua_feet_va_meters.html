@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapFoot = prompt("Nhập giá trị của foot");
+    let nhapMeter = prompt("Nhập giá tri của meter");
+
+    function footToMeter(foot) {
+        meter = 0.305 * foot;
+        return meter;
+    }
+
+    function meterToFoot(meter) {
+        foot = 3.279 * meter;
+        return foot;
+    }
+
+    document.write(nhapFoot + " foot = " + footToMeter(nhapFoot) + " meter" + "<br>");
+    document.write(nhapMeter + " meter = " + meterToFoot(nhapMeter) + " foot");
+</script>
+</html>

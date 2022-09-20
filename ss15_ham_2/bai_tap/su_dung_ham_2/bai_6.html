@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapSo = +prompt("Nhập số nguyên dương");
+
+    function kiemTra() {
+        if (Number.isInteger(nhapSo)) {
+            if (nhapSo > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    alert(kiemTra(nhapSo));
+</script>
+</html>

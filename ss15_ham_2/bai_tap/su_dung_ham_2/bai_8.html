@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapSo = +prompt("Nhập vào số phần tử có trong mảng");
+    let arr = [];
+    for (let i = 0; i < nhapSo; i++) {
+        arr[i] = +prompt("Nhập các phần tử ở mảng");
+    }
+
+    function daoNguoc() {
+        return arr.reverse();
+    }
+
+    alert(daoNguoc());
+</script>
+</html>

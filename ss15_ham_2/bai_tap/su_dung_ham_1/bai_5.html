@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapNgoiSao = prompt("Nhập ngôi sao cần tìm");
+    let ngoiSao = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let chomSao = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+
+    function kiemTraSao(star) {
+        for (let i = 0; i < ngoiSao.length; i++) {
+            if (star === ngoiSao[i]) {
+                return chomSao[i];
+            }
+        }
+        return "Không tìm thấy sao này";
+    }
+
+    alert(kiemTraSao(nhapNgoiSao));
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapSo = +prompt("Nhập số vao 1 số nguyên");
+
+    function tinhGiaiThua() {
+        if (Number.isInteger(nhapSo)) {
+            let giaiThua = 1;
+            for (let i = 1; i <= nhapSo; i++) {
+                giaiThua *= i;
+            }
+            return giaiThua;
+        } else {
+            return "Hãy nhập vào 1 số nguyên";
+        }
+    }
+
+    alert(tinhGiaiThua(nhapSo));
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapSo = prompt("Nhập số phần tử có trong mảng");
+    let arr = [];
+    for (let i = 0; i < nhapSo; i++) {
+        arr[i] = prompt("Nhập ký tụ trong mảng");
+    }
+    let kyTu = prompt("Nhập ký tự cần kiểm tra");
+    let count = 0;
+
+    function kiemTra() {
+        for (let i = 0; i < arr.length; i++) {
+            if (kyTu === arr[i]) {
+                count++;
+            }
+        }
+        if (count === 0) {
+            return -1;
+        } else {
+            return count;
+        }
+    }
+
+    alert(kiemTra());
+</script>
+</html>

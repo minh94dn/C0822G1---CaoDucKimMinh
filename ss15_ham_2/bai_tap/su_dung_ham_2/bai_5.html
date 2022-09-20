@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapSo = [];
+
+    function ketQua() {
+        for (let i = 0; i < 3; i++) {
+            nhapSo[i] = +prompt("Nhập số");
+        }
+        let min = nhapSo[0];
+        for (let i = 0; i < nhapSo.length; i++) {
+            if (nhapSo[i] < min) {
+                min = nhapSo[i];
+            }
+        }
+        alert(min);
+    }
+
+    ketQua();
+
+</script>
+</html>
