@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="DemoCanvas" width="500px" height="300px"></canvas>
+</body>
+<script>
+    class HinhChuNhat {
+        constructor(wigth, height) {
+            this.wigth = wigth;
+            this.height = height;
+        }
+
+        dienTich() {
+            return this.height * this.wigth;
+        }
+
+        chuVi() {
+            return (this.wigth + this.height) * 2;
+        }
+
+        veCanvas() {
+            let canvas = document.getElementById("DemoCanvas");
+            let ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, 0, this.wigth, this.height);
+        }
+    }
+
+    let hinhChuNhat = new HinhChuNhat(200, 100);
+    document.write(hinhChuNhat.veCanvas() + "<br>" + "Diện tích hình chữ nhật là: " + hinhChuNhat.dienTich() + "<br>" + "Chu vi hình chữ nhật là: " + hinhChuNhat.chuVi());
+</script>
+</html>

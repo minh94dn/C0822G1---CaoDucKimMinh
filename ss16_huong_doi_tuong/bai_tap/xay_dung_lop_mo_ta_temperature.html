@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class DoiNhietDo {
+        constructor(doC) {
+            this.doC = doC;
+        }
+
+        doF() {
+            return 9 / 5 * this.doC + 32;
+        }
+
+        doK() {
+            return this.doC + 273.15;
+        }
+
+        setdoC(doC) {
+            this.doC = doC;
+        }
+
+        getdoF() {
+            return 9 / 5 * this.doC + 32;
+        }
+
+        getdoK() {
+            return this.doC + 273.15;
+        }
+    }
+
+    let num = +prompt("Nhập nhiệt độ C");
+    let nhietDo = new DoiNhietDo(num);
+    document.write("Độ F là: " + nhietDo.doF() + "<br>" + "Độ K là: " + nhietDo.doK() + "<br>");
+    nhietDo.setdoC(25);
+    document.write("Nhiêt độ sau khi thay đổi là" + "<br>" + "Độ F là: " + nhietDo.getdoF() + "<br>" + "Độ K là: " + nhietDo.getdoK());
+</script>
+</html>
