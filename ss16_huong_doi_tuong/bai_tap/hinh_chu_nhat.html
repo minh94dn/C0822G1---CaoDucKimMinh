@@ -6,6 +6,7 @@
 </head>
 <body>
 <canvas id="DemoCanvas" width="500px" height="300px"></canvas>
+<br>
 </body>
 <script>
     class HinhChuNhat {
@@ -22,15 +23,47 @@
             return (this.wigth + this.height) * 2;
         }
 
+        setwigth(wight) {
+            this.wigth = wight;
+        }
+
+        setheight(height) {
+            this.height = height;
+        }
+
+        getdienTich() {
+            return this.height * this.wigth;
+        }
+
+        getchuVi() {
+            return (this.wigth + this.height) * 2;
+        }
+
         veCanvas() {
             let canvas = document.getElementById("DemoCanvas");
             let ctx = canvas.getContext('2d');
             ctx.fillStyle = 'red';
             ctx.fillRect(0, 0, this.wigth, this.height);
+            ctx.stroke();
         }
+        getveCanvas(x,y,color){
+            let canvas = document.getElementById("DemoCanvas");
+            let ctx = canvas.getContext('2d');
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, this.wigth, this.height);
+            ctx.stroke();
+        }
+
     }
 
     let hinhChuNhat = new HinhChuNhat(200, 100);
-    document.write(hinhChuNhat.veCanvas() + "<br>" + "Diện tích hình chữ nhật là: " + hinhChuNhat.dienTich() + "<br>" + "Chu vi hình chữ nhật là: " + hinhChuNhat.chuVi());
+    document.write("Diện tích hình chữ nhật là: " + hinhChuNhat.dienTich() + "<br>" + "Chu vi hình chữ nhật là: " + hinhChuNhat.chuVi() + "<br>");
+    hinhChuNhat.veCanvas();
+
+    hinhChuNhat.setwigth(100);
+    hinhChuNhat.setheight(50);
+    hinhChuNhat.getveCanvas(50,50,'blue');
+    document.write("Diện tích hình chữ nhật là: " + hinhChuNhat.getdienTich() + "<br>" + "Chu vi hình chữ nhật là: " + hinhChuNhat.getchuVi());
+
 </script>
 </html>
