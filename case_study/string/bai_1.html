@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    // Cách viết hoa chữ cái đầu tiên trong chuỗi ký tự
+    let string = '    cao   duC    KIM    minH'
+
+    function vietHoaChuDau(str) {
+        let arr = [];
+        let newArray = str.toLowerCase().split(" ");
+        for (let i = 0; i < newArray.length; i++) {
+            if (newArray[i] !== "") {
+                arr.push(newArray[i]);
+            }
+        }
+        let max = arr[0].length;
+        let index = arr[0];
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1);
+            if (arr[i].length > max) {
+                max = arr[i].length;
+                index = arr[i];
+            }
+        }
+        return arr.join(" ") + "\n" + "Từ dài nhất trong mảng là: " + index ;
+    }
+
+    alert(vietHoaChuDau(string));
+
+</script>
+</html>

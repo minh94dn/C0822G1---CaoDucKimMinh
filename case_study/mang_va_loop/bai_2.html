@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // Cho 2 mảng a và b chứa số nguyên. Tìm ra một mảng đã được sắp sếp chứa các
+    // phần tử xuất hiện trong mảng b nhưng lại không xuất hiện ở a
+
+    let arrayA = [7, 2, 5, 3, 3];
+    let arrayB = [7, 2, 5, 4, 6, 3, 5, 3];
+
+
+    function xapSep(a, b) {
+        for (let i = 0; i < a.length; i++) {
+            for (let j = 0; j < b.length; j++) {
+                if (a[i] === b[j]) {
+                    b.splice(j, 1);
+                }
+            }
+        }
+        alert(b);
+    }
+
+    xapSep(arrayA, arrayB);
+</script>
+</html>

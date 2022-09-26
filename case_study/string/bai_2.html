@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // đếm số ký tự khác nhau trong 1 xâu
+
+    let string = 'abadeba'
+
+    function kiemTra(str) {
+        let newArray = str.split('');
+        for (let i = 0; i < newArray.length; i++) {
+            for (let j = i + 1; j < newArray.length; j++) {
+                if (newArray[i] === newArray[j]) {
+                    newArray.splice(j, 1);
+                }
+            }
+        }
+        alert("Có " + newArray.length + " ký tự khác nhau trong chuỗi là: " + newArray);
+    }
+
+    kiemTra(string);
+</script>
+</html>

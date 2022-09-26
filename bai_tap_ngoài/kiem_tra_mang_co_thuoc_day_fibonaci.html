@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapSo = +prompt("Nhập số phần có trong mảng");
+    let arr = [];
+    for (let i = 0; i < nhapSo; i++) {
+        arr[i] = +prompt("Nhập các phần tử có trong mảng");
+    }
+    document.write(arr);
+
+    function daySoFibonacy(number) {
+        let a = 0;
+        let b = 1;
+        let c = 1;
+        while (c <= number) {
+            if (number === c) {
+                return true;
+            }
+            a = b;
+            b = c;
+            c = a + b;
+        }
+        return false;
+    }
+
+    let check = true;
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i]===0){
+            check =  true;
+        } else if (!daySoFibonacy(arr[i])) {
+            check = false;
+            break;
+        }
+    }
+
+    if (check) {
+        alert("OK");
+    } else {
+        alert("No");
+    }
+</script>
+</html>

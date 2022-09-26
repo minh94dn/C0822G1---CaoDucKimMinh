@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let string = prompt("Nhập chuỗi");
+
+    function vietTat(str) {
+        let arr = [];
+        let newArray = str.split(' ');
+        for (let i = 0; i < newArray.length; i++) {
+            if (newArray[i] !== "") {
+                arr.push(newArray[i]);
+            }
+        }
+
+        if (arr.length === 1) {
+            return arr.join('');
+        } else {
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = arr[i][0].toUpperCase();
+            }
+            return arr.join(' ');
+        }
+
+    }
+    alert(vietTat(string));
+</script>
+</html>

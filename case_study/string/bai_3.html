@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // cho 2 xâu ký tự, tìm số ký tự chung giữa 2 xâu đó
+
+    let string1 = 'aabcc'
+    let string2 = 'adcaa'
+    function kiemTra(s1,s2) {
+       let arr1 = s1.split('');
+       let arr2 = s2.split('');
+       let arr =[];
+        for (let i = 0; i < arr1.length; i++) {
+            for (let j = 0; j < arr2.length; j++) {
+                if(arr1[i]===arr2[j]){
+                    arr.push(arr2[j]);
+                    arr2.splice(j,1);
+                    j--;
+                    break;
+                }
+            }
+        }
+        alert("Có " + arr.length + " ký tự chung là: " + arr);
+    }
+    kiemTra(string1,string2);
+</script>
+</html>

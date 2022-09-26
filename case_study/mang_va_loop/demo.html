@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Menu gồm các loại thức uống sau:</h3>
+<p>1.Cafe</p>
+<p>2.Cam vắt</p>
+<p>3.Nước ép cà rốt</p>
+<p>4.Nước ép cà chua</p>
+<p>5.Nước lọc</p>
+<p>6.Nước dừa</p>
+<p>7.Tính tiền</p>
+<input type="text" placeholder="Hãy nhập số tương ứng" id="goiMon">
+<button onclick="goiMon()">Gọi Món</button>
+<p id="display"></p>
+</body>
+<script>
+    function goiMon() {
+        let soLuong;
+        let tien = 0;
+        let tongTien = 0;
+        let number;
+        do {
+            number = +document.getElementById("goiMon").value;
+            if(number===1){
+                +prompt("Nhập số lượng cần gọi")
+            }
+        }
+        } while (number !==7)
+ function hienThi() {
+
+
+ }
+</script>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Menu gồm các loại thức uống sau:</h3>
+<p>1.Cafe</p>
+<p>2.Cam vắt</p>
+<p>3.Nước ép cà rốt</p>
+<p>4.Nước ép cà chua</p>
+<p>5.Nước lọc</p>
+<p>6.Nước dừa</p>
+<p>7.Kết thúc gọi món và tính tiền</p>
+<button onclick="goiMon()">Gọi Món</button>
+
+</body>
+<script>
+    function goiMon() {
+        let soLuong;
+        let tien = 0;
+        let tongTien = 0;
+        let number;
+        do {
+            number = +prompt("Nhập thục đơn muốn chọn")
+            switch (number) {
+                case 1:
+                    soLuong = +prompt("Giá của 1 ly cafe là 5000đ" + "\n" + "Hãy nhập số lượng cần gọi");
+                    tien = soLuong * 5000;
+                    alert(tien);
+                    tongTien += tien
+                    break;
+                case 2:
+                    soLuong = +prompt("Giá của 1 ly cam vắt là 6000đ" + "\n" + "Hãy nhập số lượng cần gọi");
+                    tien = soLuong * 6000;
+                    alert(tien);
+                    tongTien += tien
+                    break;
+                case 3:
+                    soLuong = +prompt("Giá của 1 ly nước ép cà rốt là 7000đ" + "\n" + "Hãy nhập số lượng cần gọi");
+                    tien = soLuong * 7000;
+                    alert(tien);
+                    tongTien += tien
+                    break;
+                case 4:
+                    soLuong = +prompt("Giá của 1 ly nước ép cà chua là 8000đ" + "\n" + "Hãy nhập số lượng cần gọi");
+                    tien = soLuong * 8000;
+                    alert(tien);
+                    tongTien += tien
+                    break;
+                case 5:
+                    soLuong = +prompt("Giá của 1 ly nước lọc là 9000đ" + "\n" + "Hãy nhập số lượng cần gọi");
+                    tien = soLuong * 9000;
+                    alert(tien);
+                    tongTien += tien
+                    break;
+                case 6:
+                    soLuong = +prompt("Giá của 1 ly nước dừa là 10000đ" + "\n" + "Hãy nhập số lượng cần gọi");
+                    tien = soLuong * 10000;
+                    alert(tien);
+                    tongTien += tien
+                    break;
+                case 7:
+                    alert("Tổng số tiền phải trả là: " + tongTien);
+                    break;
+                default:
+                    alert("Nhập lại số trong thực đơn");
+            }
+        } while (number !== 7)
+    }
+
+</script>
+
+</html>

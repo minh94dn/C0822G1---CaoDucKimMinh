@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function kiemtraSoNguyenTo(number) {
+        if (number < 2) {
+            return false;
+        } else {
+            let count = 0;
+            for (let i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    count++;
+                }
+            }
+            if (count === 0) {
+                return true;
+            }
+        }
+    }
+
+    let array = [[1, 2, 5], [7, 8, 11], [13, 14, 15]];
+    let demSoNguyenTo = 0;
+    let arr = [];
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (kiemtraSoNguyenTo(array[i][j])) {
+                demSoNguyenTo++;
+                arr.push(array[i][j]);
+            }
+        }
+    }
+    document.write("Các số nguyên tố có trong mảng là: " + arr +
+        "<br>" + "Và tổng các số nguyên tố có trong mảng là: " + demSoNguyenTo);
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //  Viết hàm tính tổng các số chẵn trong ma trận có ký thước m*n.
+    // Với m,n là các số nhập từ bàn phím.
+
+    let soHang = +prompt("Nhập số cột trong ma trận");
+    let soCot = +prompt("Nhập số hàng trong ma trận");
+    let array = [];
+
+    function tinhTong(m, n) {
+        let tong = 0;
+        for (let i = 0; i < m; i++) {
+            array[i]=[];
+            for (let j = 0; j < n; j++) {
+                array[i][j] = +prompt("Nhập số phần tử trong ma trận");
+            }
+        }
+        for (let i = 0; i < m; i++) {
+            for (let j = 0; j < n; j++) {
+                if (array[i][j] % 2 === 0) {
+                    tong += array[i][j];
+                }
+            }
+        }
+
+        alert(tong);
+    }
+
+    tinhTong(soHang, soCot);
+</script>
+</html>

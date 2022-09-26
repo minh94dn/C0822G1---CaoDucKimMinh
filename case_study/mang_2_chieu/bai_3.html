@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function checkMax(arr) {
+        let max = arr[0][0];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr.length; j++) {
+                if (arr[i][j] > max) {
+                    max = arr[i][j];
+                }
+            }
+        }
+        return max;
+    }
+
+    function checkMin(arr) {
+        let min = arr[0][0];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr.length; j++) {
+                if (arr[i][j] < min) {
+                    min = arr[i][j];
+                }
+            }
+        }
+        return min;
+    }
+
+    let array = [[1, 2, 3], [4, 7, 0], [5, 10, 1]];
+    document.write("Giá trị lớn nhất trong mảng là: " + checkMax(array)
+        + "<br>" + "Giá trị lớn nhất trong mảng là: " + checkMin(array));
+</script>
+</html>
