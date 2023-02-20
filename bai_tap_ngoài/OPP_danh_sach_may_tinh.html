@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="maMay" placeholder="nhập mã máy">
+<input type="text" id="tenMay" placeholder="nhập tên máy">
+<input type="text" id="hang" placeholder="nhập hãng">
+<input type="number" id="giaTien" placeholder="nhập giá tiền">
+<input type="button" onclick="themMayTinh()" value="thêm máy mới">
+<p id="hienThi"></p>
+<script>
+    class MayTinh {
+        constructor(maMay, tenMay, hang, giaTien) {
+            this.maMay = maMay;
+            this.tenMay = tenMay;
+            this.hang = hang;
+            this.giaTien = giaTien;
+        }
+
+        setMaMay(maMay) {
+            this.maMay = maMay;
+        }
+
+        setTenMay(tenMay) {
+            this.tenMay = tenMay;
+        }
+
+        setHang(hang) {
+            this.hang = hang;
+        }
+
+        setGiaTien(giaTien) {
+            this.giaTien = giaTien;
+        }
+
+        getMaMay(maMay) {
+            return this.maMay;
+        }
+
+        getTenMay(tenMay) {
+            return this.tenMay;
+        }
+
+        getHang(hang) {
+            return this.hang;
+        }
+
+        getGiaTien(giaTien) {
+            return this.giaTien;
+        }
+    }
+
+    let danhSachMayTinh = [];
+    hienThi(danhSachMayTinh);
+
+    function hienThi(danhSach) {
+        danhSachMayTinh.sort(function (a, b) {
+            return b.getGiaTien() - a.getGiaTien();
+        })
+        let tableString = '<table border="1" style="border-collapse: collapse">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>Mã Máy</th>\n' +
+            '        <th>Tên Máy</th>\n' +
+            '        <th>Hãng</th>\n' +
+            '        <th>Giá Tiền</th>\n' +
+            '        <th>Xóa</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < danhSach.length; i++) {
+            tableString += '<tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + danhSach[i].getMaMay().toString() + '</td>\n' +
+                '        <td>' + danhSach[i].getTenMay().toString() + '</td>\n' +
+                '        <td>' + danhSach[i].getHang().toString() + '</td>\n' +
+                '        <td>' + danhSach[i].getGiaTien().toString() + '</td>\n' +
+                '        <td><input type="button"  value="delete" onclick="xoaMayTinh(' + i + ')"></td>\n' +
+                '    </tr>';
+        }
+        tableString += '</table>';
+        document.getElementById("hienThi").innerHTML = tableString;
+    }
+
+    function themMayTinh() {
+        let ma = document.getElementById("maMay").value;
+        let ten = document.getElementById("tenMay").value;
+        let hang = document.getElementById("hang").value;
+        let gia = document.getElementById("giaTien").value;
+        let mayTinhMoi = new MayTinh(ma, ten, hang, gia);
+        let dieuKien = ma.trim() === "" || ten.trim() === "" || hang.trim() === "" || gia.trim() === "" || gia < 0;
+        if (dieuKien) {
+            alert("Hãy nhập đúng thông tin");
+        } else {
+            danhSachMayTinh.push(mayTinhMoi);
+        }
+
+        hienThi(danhSachMayTinh);
+        document.getElementById("maMay").value = "";
+        document.getElementById("tenMay").value = "";
+        document.getElementById("hang").value = "";
+        document.getElementById("giaTien").value = "";
+    }
+
+    function xoaMayTinh(viTri) {
+        let conf = confirm("bạn có muốn xoá máy tính tên : " + danhSachMayTinh[viTri].getTenMay() + " ???");
+        if (conf) {
+            danhSachMayTinh.splice(viTri, 1);
+        }
+        hienThi(danhSachMayTinh);
+    }
+</script>
+</body>
+</html>

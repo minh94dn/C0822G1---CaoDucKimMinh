@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let n = +prompt("Nhập số phần tử có trong mảng");
+    let array = [];
+    for (let i = 0; i < n; i++) {
+        array[i] = +prompt("Nhập các phần tử có trong mảng");
+    }
+    document.write("Mảng vừa mới nhập là: " + array);
+    let check = true;
+    for (let i = 1; i < array.length-1; i++) {
+        if (array[i + 1] - array[i] !== array[i] - array[i - 1]) {
+            check = false;
+            break;
+        }
+    }
+    if (check) {
+        alert("OK")
+    } else {
+        alert("NO")
+    }
+
+</script>
+</html>

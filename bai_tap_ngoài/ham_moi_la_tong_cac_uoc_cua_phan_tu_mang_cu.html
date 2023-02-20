@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapSo = +prompt("Nhập số phần tử có trong mảng");
+    let array = [];
+    for (let i = 0; i < nhapSo; i++) {
+        array[i] = +prompt("Nhập các phần tử ở trong mảng");
+    }
+    document.write("Hàm vừa nhập là: " + array + "<br>");
+
+    function timUoc(number) {
+        let n =1;
+        let tong = 0;
+        let arr = [];
+        while (n<=number){
+            if(number%n===0){
+                arr.push(n);
+                tong += n;
+            }
+            n++
+        }
+        return tong;
+    }
+let arr = [];
+    for (let i = 0; i < array.length; i++) {
+        arr.push(timUoc(array[i]));
+    }
+    document.write("Hàm mới là: " + arr);
+</script>
+</html>

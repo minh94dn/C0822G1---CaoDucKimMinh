@@ -10,7 +10,7 @@
 
 <script>
     // Cách viết hoa chữ cái đầu tiên trong chuỗi ký tự
-    let string = '    cao   duC    KIM    minH'
+    let string = '    hai   tran  cao   duC    KIM    minH'
 
     function vietHoaChuDau(str) {
         let arr = [];
@@ -22,6 +22,7 @@
         }
         let max = arr[0].length;
         let index = arr[0];
+        let arrMax = [];
         for (let i = 0; i < arr.length; i++) {
             arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1);
             if (arr[i].length > max) {
@@ -29,10 +30,15 @@
                 index = arr[i];
             }
         }
-        return arr.join(" ") + "\n" + "Từ dài nhất trong mảng là: " + index ;
+        for (let i = 0; i < arr.length; i++) {
+            if (index.length === arr[i].length) {
+                arrMax.push(arr[i]);
+            }
+        }
+        return arr.join(" ") + "<br>" + "Ký tự dài nhất trong mảng là: " + arrMax;
     }
 
-    alert(vietHoaChuDau(string));
+    document.write(vietHoaChuDau(string));
 
 </script>
 </html>

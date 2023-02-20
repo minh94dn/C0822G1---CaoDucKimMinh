@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let soHang = +prompt("Nhập số cột trong ma trận");
+    let soCot = +prompt("Nhập số hàng trong ma trận");
+    let array = [];
+    for (let i = 0; i < soHang; i++) {
+        array[i] = [];
+        for (let j = 0; j < soCot; j++) {
+            array[i][j] = +prompt("Nhập số phần tử trong ma trận");
+        }
+        document.write(array[i] + "<br>");
+    }
+let tong = 0;
+    for (let i = 0; i < soHang; i++) {
+        for (let j = 0; j < soCot; j++) {
+            if(i===j || i + j === soCot-1){
+                tong += array[i][j];
+            }
+        }
+    }
+    alert(tong);
+
+</script>
+</html>

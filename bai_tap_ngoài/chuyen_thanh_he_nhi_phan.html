@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function soNhiPhan(number) {
+        let arr = [];
+        let thuong;
+        do {
+            thuong = Math.floor(number / 2);
+            if (number % 2) {
+                arr.push(0);
+            } else {
+                arr.push(1);
+            }
+            number = thuong;
+        } while (thuong > 0)
+        return arr.join("");
+    }
+    document.write(soNhiPhan(2));
+</script>
+</html>
