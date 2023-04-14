@@ -1,0 +1,81 @@
+<body style="text-align: center">
+<div class="justify-content-center m-0 mb-2">
+  <div>
+    <div>
+      <h1 style="size:32px; margin-top: 50px; margin-bottom: 30px; text-align: center">QUẢN LÝ ĐIỂM CỦA HỌC SINH
+        LỚP 1A</h1>
+    </div>
+
+    <div>
+      <div class="col-1"></div>
+      <div class="col-10 container-fluid ">
+        <div class="row">
+          <div class="col-9"></div>
+          <div class="col-3" style="text-align: right">
+            <form class="d-flex" style="margin-top: 10px; margin-bottom: 20px">
+<!--              <input  class="form-control me-2" [(ngModel)]="teacherId" type="hidden"-->
+<!--                     aria-label="Search" style="border: 1px solid #b6effb">-->
+              <input class="form-control me-2" [(ngModel)]="studentName" type="search" placeholder="Tìm tên học sinh"
+                     aria-label="Search" style="border: 1px solid #b6effb">
+              <button class="btn" (click)="search()" type="submit" style="text-align: center; size: 30px; border: 1px solid #b6effb">
+                <i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <table class="table table-bordered table-hover">
+          <thead class="table-primary">
+          <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Lên lớp</th>
+            <th scope="col">Họ và tên</th>
+            <th scope="col">Ngày sinh</th>
+            <th scope="col">Học kỳ 1</th>
+            <th scope="col">Học kỳ 2</th>
+            <th scope="col">Trung bình cả năm</th>
+            <th scope="col">Chỉnh sửa</th>
+            <th scope="col">Xóa</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let point of pointManagementList; index as i">
+            <th scope="row">{{i + 1}}</th>
+            <td style="text-align: center">
+              <input class="form-check-input" type="checkbox" value="">
+            </td>
+            <td style="text-align: left">{{point.studentName}}</td>
+            <td>{{point.dateOfBirth}}</td>
+            <td>
+              <input [value]="point.semesterOne" #one>
+            </td>
+            <td>
+              <input [value]="point.semesterTwo" #two>
+            </td>
+
+            <td>{{point.avgPoint}}</td>
+            <td>
+              <button type="button" class="btn btn-outline-primary" (click)="editPoint1(point.id,one.value,two.value)"
+                      data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <img src="https://img.icons8.com/color/100/null/pencil-tip.png"
+                     style="width: 30px"/>
+              </button>
+<!--                                          <span type="submit"><img src="https://img.icons8.com/color/100/null/pencil-tip.png"-->
+<!--                                                                                                                         style="width: 30px"/></span>-->
+            </td>
+            <td>
+                            <span><img src="https://img.icons8.com/clouds/100/null/trash.png"
+                                       style="width: 40px"/></span>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="col-1"></div>
+    </div>
+  </div>
+</div>
+</body>
+
+
