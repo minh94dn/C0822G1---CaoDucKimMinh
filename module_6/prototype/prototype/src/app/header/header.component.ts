@@ -15,6 +15,6 @@ export class HeaderComponent implements OnInit {
   }
 
   scrollToTopLogin() {
-    this.scroll.scrollToPosition([0, 800]);
+    this.scroll.scrollToPosition([0, 1000]);
   }
 }
