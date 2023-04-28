@@ -20,7 +20,7 @@ public class ProductRestController {
     private IProductService iProductService;
 
     @GetMapping("/product/search")
-    public ResponseEntity<List<Product>> searchAllProduct(@RequestParam("search") String search) {
+    public ResponseEntity<List<Product>> searchAllProduct(@RequestParam("name") String search) {
         List<Product> productList = iProductService.searchAllProduct(search);
         if (productList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
