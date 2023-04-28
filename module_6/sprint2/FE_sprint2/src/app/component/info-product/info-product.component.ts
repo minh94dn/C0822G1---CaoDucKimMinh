@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from "../../model/product";
 import {ProductService} from "../../service/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {CartService} from "../../service/cart.service";
+import {TokenStorageService} from "../../service/token-storage.service";
 
 @Component({
   selector: 'app-info-product',
@@ -15,7 +17,9 @@ export class InfoProductComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private cartService:CartService,
+              private token:TokenStorageService) {
     this.activatedRoute.paramMap.subscribe(param => {
       this.id = +param.get('id');
     })
@@ -30,5 +34,11 @@ export class InfoProductComponent implements OnInit {
       console.log(error)
     })
   }
+
+
+    addCart(id:number) {
+      this.cartService.addCart(this.token.getIdAccount(),id,1).subscribe(next=>{
+      })
+    }
 
 }

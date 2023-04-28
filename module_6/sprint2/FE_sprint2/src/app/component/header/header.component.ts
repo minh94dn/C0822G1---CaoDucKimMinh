@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
               private tokenStorageService: TokenStorageService,
               private shareService: ShareService) {
     this.shareService.getClickEvent().subscribe(next => {
+      console.log(next)
       this.isLogin = tokenStorageService.isLogged();
       this.nameUser = tokenStorageService.getUser().name
       console.log(this.nameUser)

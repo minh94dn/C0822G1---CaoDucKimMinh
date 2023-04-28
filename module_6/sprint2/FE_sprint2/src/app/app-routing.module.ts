@@ -11,7 +11,6 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'orderDetail', component: OrderDetailComponent},
   {path: 'info/:id', component: InfoProductComponent},
-
 ];
 
 @NgModule({

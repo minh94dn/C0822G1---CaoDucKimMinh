@@ -55,7 +55,7 @@
 
       <!--      const formattedNum = num.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'})-->
       <h3 class="font-weight-semi-bold mb-4"
-          style="color: red">{{product.price  | currency:'VND':'symbol-narrow':'1.0-0'}}</h3>
+          style="color: red">{{product.price  | number}} đ</h3>
       <p>{{product.description}}</p>
       <!--      <p class="mb-4"> Với hai màu xanh trắng nhẹ nhàng, máy làm mát Daikiosan DKA-04000C không chỉ có hiệu quả làm mát,-->
       <!--        mà còn khiến cho không gian trông hài hòa, mát mắt hơn bởi thiết kế gọn gàng hiện đại.-->
@@ -70,46 +70,21 @@
       <!--          sơn tĩnh điện giúp sản phẩm bền bỉ hơn.</p>-->
       <div class="d-flex mb-3">
       </div>
-      <!--      <div class="d-flex mb-4">-->
-      <!--        <p class="text-dark font-weight-medium mb-0 mr-3">Bảng màu:</p>-->
-      <!--        <form>-->
-      <!--          <div class="custom-control custom-radio custom-control-inline">-->
-      <!--            <input type="radio" class="custom-control-input" id="color-1" name="color">-->
-      <!--            <label class="custom-control-label" for="color-1">Immanence</label>-->
-      <!--          </div>-->
-      <!--          <div class="custom-control custom-radio custom-control-inline">-->
-      <!--            <input type="radio" class="custom-control-input" id="color-2" name="color">-->
-      <!--            <label class="custom-control-label" for="color-2">Macaron Red</label>-->
-      <!--          </div>-->
-      <!--          <div class="custom-control custom-radio custom-control-inline">-->
-      <!--            <input type="radio" class="custom-control-input" id="color-3" name="color">-->
-      <!--            <label class="custom-control-label" for="color-3">Beige Avenue</label>-->
-      <!--          </div>-->
-      <!--          <div class="custom-control custom-radio custom-control-inline">-->
-      <!--            <input type="radio" class="custom-control-input" id="color-4" name="color">-->
-      <!--            <label class="custom-control-label" for="color-4">Cutesicle</label>-->
-      <!--          </div>-->
-      <!--          <div class="custom-control custom-radio custom-control-inline">-->
-      <!--            <input type="radio" class="custom-control-input" id="color-5" name="color">-->
-      <!--            <label class="custom-control-label" for="color-5">Needful</label>-->
-      <!--          </div>-->
-      <!--        </form>-->
-      <!--      </div>-->
       <div class="d-flex align-items-center mb-4 pt-2">
         <div class="input-group quantity mr-3" style="width: 130px;">
           <div class="input-group-btn">
-            <button class="btn btn-primary btn-minus">
+            <button class="btn btn-primary btn-minus" >
               <i class="fa fa-minus"></i>
             </button>
           </div>
           <input type="text" class="form-control bg-secondary text-center" value="1">
           <div class="input-group-btn">
-            <button class="btn btn-primary btn-plus">
+            <button class="btn btn-primary btn-plus" >
               <i class="fa fa-plus"></i>
             </button>
           </div>
         </div>
-        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Thêm vào giỏ hàng</button>
+        <button routerLink="/orderDetail" class="btn btn-primary px-3" (click)="addCart(product.id)"><i class="fa fa-shopping-cart mr-1"></i>Thêm vào giỏ hàng</button>
       </div>
       <div class="d-flex pt-2">
         <p class="text-dark font-weight-medium mb-0 mr-2">Chia sẻ:</p>
@@ -133,7 +108,6 @@
   <div class="row px-xl-5"></div>
 </div>
 <!-- Shop Detail End -->
-
 
 <!--&lt;!&ndash; Products Start &ndash;&gt;-->
 <!--<div class="container-fluid py-5">-->
