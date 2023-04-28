@@ -12,7 +12,7 @@ export class ProductService {
   }
 
   searchAllProduct(search: string): Observable<Product[]> {
-    return this.httpClient.get<Product[]>('http://localhost:8080/api/product/fanList?page=' + search)
+    return this.httpClient.get<Product[]>('http://localhost:8080/api/product/search?name=' + search)
   }
 
   findByCategoryId1(page1: number, size1: number): Observable<Product[]> {
