@@ -10,8 +10,8 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String dateOrder;
-    private boolean flagDelete;
-    private boolean paymentStatus;
+
+    private double total;
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
@@ -19,12 +19,12 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(Long id, String dateOrder, boolean flagDelete, boolean paymentStatus, Account account) {
-        this.id = id;
-        this.dateOrder = dateOrder;
-        this.flagDelete = flagDelete;
-        this.paymentStatus = paymentStatus;
-        this.account = account;
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public Long getId() {
@@ -43,21 +43,6 @@ public class Orders {
         this.dateOrder = dateOrder;
     }
 
-    public boolean isFlagDelete() {
-        return flagDelete;
-    }
-
-    public void setFlagDelete(boolean flagDelete) {
-        this.flagDelete = flagDelete;
-    }
-
-    public boolean isPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(boolean paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
 
     public Account getAccount() {
         return account;

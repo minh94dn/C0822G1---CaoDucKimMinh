@@ -3,9 +3,10 @@ package com.controller;
 import com.model.Product;
 import com.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +19,29 @@ public class ProductRestController {
     @Autowired
     private IProductService iProductService;
 
-    @GetMapping("/product/list")
-    public ResponseEntity<List<Product>> getAllProduct() {
-        List<Product> productList = iProductService.getAllProduct();
+    @GetMapping("/product/search")
+    public ResponseEntity<List<Product>> searchAllProduct(@RequestParam("search") String search) {
+        List<Product> productList = iProductService.searchAllProduct(search);
+        if (productList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(productList, HttpStatus.OK);
+    }
+
+    @GetMapping("/product/fanList")
+    public ResponseEntity<List<Product>> findByCategoryId1(@RequestParam("page") int page, @RequestParam("size") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        List<Product> productList = iProductService.findByCategoryId1(pageable);
+        if (productList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(productList, HttpStatus.OK);
+    }
+
+    @GetMapping("/product/stoveList")
+    public ResponseEntity<List<Product>> findByCategoryId2(@RequestParam("page") int page, @RequestParam("size") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        List<Product> productList = iProductService.findByCategoryId2(pageable);
         if (productList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

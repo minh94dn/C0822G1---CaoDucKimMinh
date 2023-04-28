@@ -15,13 +15,6 @@ public class AccountServiceImpl implements IAccountService {
     @Autowired
     private IAccountRepository iAccountRepository;
 
-    /**
-     * Created by: SyTV
-     * Date created: 27/02/2023
-     *
-     * @param username
-     * @return account
-     */
     @Override
     public Optional<Account> findByUsername(String username) {
         return iAccountRepository.findByUsername(username);
@@ -29,12 +22,6 @@ public class AccountServiceImpl implements IAccountService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    /**
-     * Create by : NuongHT
-     * Date create: 28/02/2023
-     * Description: create reponsitory call database and check account by method findByUserId
-     */
 
     @Override
     public void save(Long accountId) {
@@ -51,43 +38,24 @@ public class AccountServiceImpl implements IAccountService {
         iAccountRepository.save(account);
     }
 
-    /**
-     * Created by: SyTV
-     * Date created: 27/02/2023
-     * Function: findByUserName
-     *
-     * @param username
-     * @return true false
-     */
     @Override
     public Boolean existsAccountByUsername(String username) {
         return iAccountRepository.existsAccountByUsername(username);
     }
 
-    /**
-     * Created by: SyTV
-     * Date created: 27/02/2023
-     * Function: findByUserName
-     *
-     * @param email
-     * @return true false
-     */
     @Override
     public Boolean existsAccountByEmail(String email) {
         return iAccountRepository.existsAccountByEmail(email);
     }
 
-    /**
-     * Created by: SyTV
-     * Date created: 27/02/2023
-     * Function: findByUserName
-     *
-     * @param account
-     *
-     */
     @Override
     public void save(Account account) {
         iAccountRepository.save(account);
+    }
+
+    @Override
+    public Account findById(long id) {
+        return iAccountRepository.findById(id).orElse(null);
     }
 
 }
