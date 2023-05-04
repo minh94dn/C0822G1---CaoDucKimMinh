@@ -20,7 +20,7 @@ export class OrderDetailComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private cartService:CartService,
-              private token:TokenStorageService ,
+              private tokenStorageService:TokenStorageService,
               private shareService:ShareService) {
     this.getCart();
     this.shareService.getClickEvent().subscribe(next => {
@@ -35,7 +35,7 @@ export class OrderDetailComponent implements OnInit {
 
 
   getCart() {
-    this.cartService.showAllCart(this.token.getIdAccount()).subscribe(next => {
+    this.cartService.showAllCart(this.tokenStorageService.getIdAccount()).subscribe(next => {
       console.log(next)
       this.cart = next;
       this.getValue()

@@ -5,11 +5,13 @@ import {OrderDetailComponent} from "./component/order-detail/order-detail.compon
 import {InfoProductComponent} from "./component/info-product/info-product.component";
 import {BodyComponent} from "./component/body/body.component";
 import {SearchComponent} from "./component/search/search.component";
+import {AuthGuard} from "./component/security/auth.guard";
 
 
 const routes: Routes = [
   {path: '', component: BodyComponent},
-  {path: 'login', component: LoginComponent},
+  {canActivate: [AuthGuard],
+    path: 'login', component: LoginComponent},
   {path: 'orderDetail', component: OrderDetailComponent},
   {path: 'info/:id', component: InfoProductComponent},
   {path: 'search', component: SearchComponent},

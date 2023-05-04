@@ -3,6 +3,8 @@ import {ViewportScroller} from "@angular/common";
 import {TokenStorageService} from "../../service/token-storage.service";
 import {ShareService} from "../../service/share.service";
 import {Router} from "@angular/router";
+import {Cart} from "../../model/cart";
+import {CartService} from "../../service/cart.service";
 
 @Component({
   selector: 'app-header',
@@ -11,23 +13,46 @@ import {Router} from "@angular/router";
 
 })
 export class HeaderComponent implements OnInit {
-  isLogin = true;
+  count= 0;
+  isLogin: boolean;
   nameUser: string;
+  idAccount: number;
   @Input() inputValue: string;
 
   constructor(private scroll: ViewportScroller,
               private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
-              private router: Router) {
-    this.shareService.getClickEvent().subscribe(next => {
-      console.log(next)
-      this.isLogin = tokenStorageService.isLogged();
-      this.nameUser = tokenStorageService.getUser().name
-      console.log(this.nameUser)
-    })
-  }
+              private router: Router,
+              private cartService: CartService) {
+
+      this.idAccount = Number(this.tokenStorageService.getIdAccount())
+      this.cartService.showAllCart(this.idAccount).subscribe(next => {
+        this.count = next.length;
+        this.isLogin = this.tokenStorageService.isLogged();
+        this.nameUser = this.tokenStorageService.getUser()?.name
+        console.log(this.nameUser)
+      })
+      this.shareService.getCount().subscribe(data => {
+        this.count = data
+      })
+    }
+
 
   ngOnInit(): void {
+    if(this.tokenStorageService.getToken()){
+      this.shareService.getClickEvent().subscribe(next1 => {
+      this.idAccount = Number(this.tokenStorageService.getIdAccount())
+      this.cartService.showAllCart(this.idAccount).subscribe(next => {
+        this.count = next.length;
+          this.isLogin = this.tokenStorageService.isLogged();
+          this.nameUser = this.tokenStorageService.getUser()?.name
+        console.log(this.nameUser)
+        })
+      });
+      this.shareService.getCount().subscribe(data => {
+        this.count = data
+      })
+    }
   }
 
   scrollToTopLogin() {
@@ -36,8 +61,9 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.tokenStorageService.logout();
-    this.isLogin = false;
+    this.isLogin = this.tokenStorageService.isLogged();
     this.shareService.sendClickEvent();
+    this.router.navigateByUrl("")
   }
 
 

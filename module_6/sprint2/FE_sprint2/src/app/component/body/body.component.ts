@@ -3,6 +3,7 @@ import {Product} from "../../model/product";
 import {ProductService} from "../../service/product.service";
 import {CartService} from "../../service/cart.service";
 import {TokenStorageService} from "../../service/token-storage.service";
+import {ShareService} from "../../service/share.service";
 
 @Component({
   selector: 'app-body',
@@ -23,7 +24,11 @@ export class BodyComponent implements OnInit {
   hasMore2 = false;
   displayedCount2: number = 0;
 
-  constructor(private productService: ProductService, private cartService:CartService, private token:TokenStorageService) {
+
+  constructor(private productService: ProductService,
+              private cartService:CartService,
+              private token:TokenStorageService,
+              private shareService: ShareService) {
     // this.getALlProduct();
   }
 
@@ -85,7 +90,9 @@ export class BodyComponent implements OnInit {
 
   addCart(id:number) {
       this.cartService.addCart(this.token.getIdAccount(),id,1).subscribe(next=>{
-
       })
+    this.cartService.showAllCart(this.token.getIdAccount()).subscribe(data => {
+      this.shareService.setCount(data.length)
+    })
   }
 }

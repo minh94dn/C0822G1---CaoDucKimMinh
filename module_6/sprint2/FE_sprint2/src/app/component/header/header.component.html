@@ -56,7 +56,7 @@
       </a>
       <a routerLink="/orderDetail" class="btn border" (click)="scrollToTopLogin()">
         <i class="fas fa-shopping-cart text-primary"></i>
-        <span class="badge">0</span>
+        <span *ngIf="!isLogin" class="text-danger">{{count}}</span>
       </a>
     </div>
   </div>

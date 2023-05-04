@@ -32,8 +32,6 @@ public class CartRestRepository {
 
     @PostMapping("/create")
     public ResponseEntity<?> createOrUpdate(@RequestBody CartDTO cartDto) {
-        System.out.println(cartDto.getAccountId());
-        System.out.println(cartDto.getProductId());
         Cart cart = new Cart();
         Account account = iAccountService.findById(cartDto.getAccountId());
         Product product = iProductService.findById(cartDto.getProductId());

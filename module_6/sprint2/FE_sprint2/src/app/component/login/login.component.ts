@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 10);
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/body';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
     if (this.tokenStorageService.getToken()) {
       this.securityService.isLoggedIn = true;
       this.roles = this.tokenStorageService.getRole();
