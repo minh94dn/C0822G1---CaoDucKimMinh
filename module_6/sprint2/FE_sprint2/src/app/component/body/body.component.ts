@@ -89,9 +89,9 @@ export class BodyComponent implements OnInit {
   }
 
   addCart(id:number) {
-      this.cartService.addCart(this.token.getIdAccount(),id,1).subscribe(next=>{
+      this.cartService.addCart(this.token.getUser().id,id,1).subscribe(next=>{
       })
-    this.cartService.showAllCart(this.token.getIdAccount()).subscribe(data => {
+    this.cartService.showAllCart(this.token.getUser().id).subscribe(data => {
       this.shareService.setCount(data.length)
     })
   }

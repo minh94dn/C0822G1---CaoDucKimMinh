@@ -37,7 +37,7 @@ export class InfoProductComponent implements OnInit {
 
 
     addCart(id:number) {
-      this.cartService.addCart(this.token.getIdAccount(),id,1).subscribe(next=>{
+      this.cartService.addCart(this.token.getUser().id,id,1).subscribe(next=>{
       })
     }
 

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {SecurityService} from "../../service/security.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import Swal from 'sweetalert2';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TokenStorageService} from "../../service/token-storage.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ShareService} from "../../service/share.service";
+import {SecurityService} from "../../service/security.service";
+
 
 @Component({
   selector: 'app-login',
@@ -11,102 +13,76 @@ import {ShareService} from "../../service/share.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  formLogin: FormGroup;
+  username = String;
   errorMessage = '';
   roles: string[] = [];
-  returnUrl = '/';
-  errors = {username: '', password: ''};
-  isSubmited = false;
+  returnUrl: string;
+  rememberMe: boolean;
 
-  formLogin = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    rememberMe: new FormControl(false)
-  });
-  constructor(private router: Router,
-              private tokenStorageService: TokenStorageService,
+  constructor(private tokenStorageService: TokenStorageService,
+              private authService: SecurityService,
+              private router: Router,
               private route: ActivatedRoute,
               private shareService: ShareService,
-              private securityService: SecurityService
-  ) { }
-
-  ngOnInit(): void {
-    window.scrollTo(0, 10);
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
-    if (this.tokenStorageService.getToken()) {
-      this.securityService.isLoggedIn = true;
-      this.roles = this.tokenStorageService.getRole();
-      const username = this.tokenStorageService.getUsername();
-    }
+  ) {
   }
 
+  ngOnInit(): void {
+    this.formLogin = new FormGroup({
+      username: new FormControl(),
+      password: new FormControl(),
+      rememberMe: new FormControl(false)
 
-  login() {
-    this.errors = {username: '', password: ''};
-    this.errorMessage = '';
-    if (this.formLogin.valid) {
-      this.securityService.login(this.formLogin.value).subscribe(
-        data => {
-          console.log(data);
-          if (this.formLogin.value.rememberMe) {
-            this.tokenStorageService.saveTokenLocal(data.token);
-            this.tokenStorageService.saveUserLocal(data, data.email, data.id, data.username, data.name, data.roles, data.avatar);
-          } else {
-            this.tokenStorageService.saveTokenSession(data.token);
-            this.tokenStorageService.saveUserSession(data, data.email, data.id, data.username, data.name, data.roles, data.avatar);
-          }
-          const user = this.tokenStorageService.getUser();
-          this.securityService.setIsLoggedIn(user, true);
-          this.shareService.sendClickEvent();
-          const username = this.tokenStorageService.getUsername();
-          this.roles = this.tokenStorageService.getRole();
-          this.router.navigateByUrl('/');
-          this.formLogin.reset();
-        //   if (this.tokenStorageService.getRole()[0] != 'ROLE_ADMIN') {
-        //     this.orderService.createCart(parseInt(this.tokenStorageService.getIdAccount())).subscribe();
-        //   }
-        //   this.orderService.findOrderByAccountId(parseInt(data.id)).subscribe(next => {
-        //     this.order = next;
-        //     this.orderService.addCartLocal(this.tokenStorageService.getCart(), this.order.orderId).subscribe(next => {
-        //         this.tokenStorageService.removeCart();
-        //         this.shareService.sendClickEvent();
-        //       }
-        //     );
-        //   });
-        //   Swal.fire({
-        //     position: 'center',
-        //     icon: 'success',
-        //     title: 'Thông báo!',
-        //     text: 'Đăng nhập thành công',
-        //     showConfirmButton: false,
-        //     timer: 2000
-        //   });
-        }, error => {
-        //   if (error.status == 406) {
-        //     this.errorMessage = error.error.message;
-        //     this.toast.error(this.errorMessage, 'Thất bại'
-        //       , {positionClass: 'toast-top-center'});
-        //     Swal.fire({
-        //       position: 'center',
-        //       icon: 'error',
-        //       title: 'Thông báo!',
-        //       text: 'Đăng nhập thất bại',
-        //       showConfirmButton: false,
-        //       timer: 2000
-        //     });
-        //   }
-          this.securityService.isLoggedIn = false;
-          if (error.error.errors) {
-            for (let i = 0; i < error.error.errors.length; i++) {
-              if (error.error.errors && error.error.errors[i].field === 'username') {
-                this.errors.username = error.error.errors[i].defaultMessage;
-              }
-              if (error.error.errors && error.error.errors[i].field === 'password') {
-                this.errors.password = error.error.errors[i].defaultMessage;
-              }
-            }
-          }
-        }
-      );
+    });
+
+    if (this.tokenStorageService.getToken()) {
+      const user = this.tokenStorageService.getUser();
+      this.authService.isLoggedIn = true;
+      this.roles = this.tokenStorageService.getUser().roles;
+      this.username = this.tokenStorageService.getUser().username;
     }
+    this.returnUrl = this.route.snapshot.queryParams[' returnUrl'];
+  }
+
+  onSubmit() {
+    this.authService.login(this.formLogin.value).subscribe(
+      data => {
+        console.log(data.token)
+        if (this.formLogin.value.rememberMe) {
+          this.tokenStorageService.saveTokenLocal(data.token);
+          this.tokenStorageService.saveUserLocal(data);
+        } else {
+          this.tokenStorageService.saveTokenSession(data.token);
+          this.tokenStorageService.saveUserLocal(data);
+        }
+
+        this.authService.isLoggedIn = true;
+        this.username = this.tokenStorageService.getUser().username;
+        this.roles = this.tokenStorageService.getUser().roles;
+        this.formLogin.reset();
+        this.router.navigateByUrl(this.returnUrl);
+        this.shareService.sendClickEvent();
+      },
+      err => {
+        console.log('Lỗi aaaa');
+        this.authService.isLoggedIn = false;
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          }
+        });
+        Toast.fire({
+          icon: 'error',
+          title: 'Tên đăng nhập hoặc mật khẩu không đúng'
+        });
+      }
+    );
   }
 }

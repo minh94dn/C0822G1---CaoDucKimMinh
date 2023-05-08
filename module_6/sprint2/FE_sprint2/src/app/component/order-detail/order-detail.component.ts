@@ -15,7 +15,6 @@ export class OrderDetailComponent implements OnInit {
   quantity = 0;
   cart: Cart[] = []
   total = 0;
-  account: Account
   constructor(private productService: ProductService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -29,17 +28,18 @@ export class OrderDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getCart();
   }
 
-
-
   getCart() {
-    this.cartService.showAllCart(this.tokenStorageService.getIdAccount()).subscribe(next => {
-      console.log(next)
-      this.cart = next;
-      this.getValue()
-    })
+
+      this.cartService.showAllCart(this.tokenStorageService.getUser().id).subscribe(next => {
+        console.log(next)
+        this.cart = next;
+        this.getValue()
+        this.shareService.setCount(next.length);
+      })
+
   }
   getValue() {
     this.total = 0
@@ -65,6 +65,5 @@ export class OrderDetailComponent implements OnInit {
       this.getCart()
       this.getValue()
     })
-
   }
 }

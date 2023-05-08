@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.tokenStorageService.isLogged()) {
+    if (!this.tokenStorageService.isLogger()) {
       return true;
     }
     this.router.navigateByUrl("");
@@ -33,5 +33,4 @@ export class AuthGuard implements CanActivate {
     });
     return false;
   }
-
 }

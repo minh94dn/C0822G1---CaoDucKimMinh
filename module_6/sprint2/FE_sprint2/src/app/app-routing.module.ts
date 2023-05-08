@@ -6,15 +6,18 @@ import {InfoProductComponent} from "./component/info-product/info-product.compon
 import {BodyComponent} from "./component/body/body.component";
 import {SearchComponent} from "./component/search/search.component";
 import {AuthGuard} from "./component/security/auth.guard";
+import {AdminGuard} from "./component/security/admin.guard";
+import {ReceiptComponent} from "./component/receipt/receipt.component";
 
 
 const routes: Routes = [
   {path: '', component: BodyComponent},
   {canActivate: [AuthGuard],
     path: 'login', component: LoginComponent},
-  {path: 'orderDetail', component: OrderDetailComponent},
+  {path: 'orderDetail', component: OrderDetailComponent, canActivate: [AdminGuard]},
   {path: 'info/:id', component: InfoProductComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'payment', component: ReceiptComponent},
 ];
 
 @NgModule({

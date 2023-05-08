@@ -5,6 +5,8 @@ import {ShareService} from "../../service/share.service";
 import {Router} from "@angular/router";
 import {Cart} from "../../model/cart";
 import {CartService} from "../../service/cart.service";
+import {SecurityService} from "../../service/security.service";
+import {ProductService} from "../../service/product.service";
 
 @Component({
   selector: 'app-header',
@@ -13,61 +15,73 @@ import {CartService} from "../../service/cart.service";
 
 })
 export class HeaderComponent implements OnInit {
-  count= 0;
-  isLogin: boolean;
-  nameUser: string;
-  idAccount: number;
+
   @Input() inputValue: string;
+  username?: string;
+  img?: string;
+  name?: string;
+  role?: string;
+  isLoggedIn = false;
+  itemCount = 0;
 
-  constructor(private scroll: ViewportScroller,
-              private tokenStorageService: TokenStorageService,
+  constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
+              private accountService: SecurityService,
               private router: Router,
-              private cartService: CartService) {
-
-      this.idAccount = Number(this.tokenStorageService.getIdAccount())
-      this.cartService.showAllCart(this.idAccount).subscribe(next => {
-        this.count = next.length;
-        this.isLogin = this.tokenStorageService.isLogged();
-        this.nameUser = this.tokenStorageService.getUser()?.name
-        console.log(this.nameUser)
-      })
-      this.shareService.getCount().subscribe(data => {
-        this.count = data
-      })
-    }
+              private cartDetailService: CartService,
+              private productService: ProductService,
+              private searchService: ShareService) {
+    this.shareService.getClickEvent().subscribe(() => {
+      this.loadHeader();
+    });
+    this.searchService.getCount().subscribe(count => {
+      this.itemCount = count;
+    });
+  }
 
 
   ngOnInit(): void {
-    if(this.tokenStorageService.getToken()){
-      this.shareService.getClickEvent().subscribe(next1 => {
-      this.idAccount = Number(this.tokenStorageService.getIdAccount())
-      this.cartService.showAllCart(this.idAccount).subscribe(next => {
-        this.count = next.length;
-          this.isLogin = this.tokenStorageService.isLogged();
-          this.nameUser = this.tokenStorageService.getUser()?.name
-        console.log(this.nameUser)
-        })
-      });
-      this.shareService.getCount().subscribe(data => {
-        this.count = data
-      })
+    this.loadHeader();
+  }
+
+  loadHeader(): void {
+    if (this.tokenStorageService.getToken()) {
+      this.role = this.tokenStorageService.getUser().roles[0];
+      this.username = this.tokenStorageService.getUser().username;
+      this.isLoggedIn = this.username != null;
+      this.findNameUser();
+    } else {
+      this.isLoggedIn = false;
     }
   }
 
-  scrollToTopLogin() {
-    this.scroll.scrollToPosition([0, 600]);
+  findNameUser(): void {
+    this.accountService.findByUserName(this.tokenStorageService.getUser().username).subscribe(next => {
+      console.log(next)
+      this.name = next?.name;
+      // this.img = next?.avatar;
+      this.cartDetailService.showAllCart(next?.id).subscribe(item => {
+        console.log(item.length)
+        this.itemCount = item?.length;
+      });
+    });
   }
 
-  logout() {
-    this.tokenStorageService.logout();
-    this.isLogin = this.tokenStorageService.isLogged();
-    this.shareService.sendClickEvent();
-    this.router.navigateByUrl("")
+  logOut() {
+    this.tokenStorageService.signOut();
+    this.ngOnInit();
+    this.router.navigateByUrl('');
   }
 
+  // scrollToTopLogin() {
+  //   this.scroll.scrollToPosition([0, 600]);
+  // }
 
   goToResultPage() {
     this.router.navigate(['/search'], {queryParams: {'name': this.inputValue}});
+  }
+
+  scrollToTopLogin() {
+
   }
 }

@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-const AUTH_API = 'http://localhost:8080/api/auth/';
+const AUTH_API = 'http://localhost:8080/api/public/auth/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SecurityService {
   httpOptions: any;
-  isLoggedIn = false;
+  isLoggedIn: boolean;
+  username = '';
   isLoggedInObservable = new Subject<boolean>();
   isUserObservable = new Subject<any>();
 
@@ -41,5 +42,9 @@ export class SecurityService {
 
   getIsLoggedIn(): Observable<boolean> {
     return this.isLoggedInObservable.asObservable();
+  }
+
+  findByUserName(userName: string):Observable<Account>{
+    return this.http.get<Account>('http://localhost:8080/api/public/auth/findUserName/' + userName)
   }
 }
