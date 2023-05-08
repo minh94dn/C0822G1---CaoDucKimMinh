@@ -26,11 +26,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/public/auth")
 @CrossOrigin("*")
 public class AuthRestController {
     @Autowired
@@ -81,6 +82,15 @@ public class AuthRestController {
         account.setRoles(roles);
         iAccountService.save(account);
         return new ResponseEntity<>(new ResponseMessage("Đăng kí thành công"), HttpStatus.OK);
+    }
+
+    @GetMapping("/findUserName/{userName}")
+    public ResponseEntity<?> findByUsername(@PathVariable String userName) {
+        Optional<Account> account = iAccountService.findByUsername(userName);
+        if (account == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(account, HttpStatus.OK);
     }
 
 

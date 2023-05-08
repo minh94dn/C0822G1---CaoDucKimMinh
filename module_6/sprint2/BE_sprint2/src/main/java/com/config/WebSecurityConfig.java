@@ -1,6 +1,6 @@
 package com.config;
 
-import com.jwt.JWTEntryPoint;
+//import com.jwt.JWTEntryPoint;
 import com.jwt.JWTTokenFilter;
 import com.service.principle.AccountDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +23,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AccountDetailService accountDetailService;
-    @Autowired
-    private JWTEntryPoint jwtEntryPoint;
+//    @Autowired
+//    private JWTEntryPoint jwtEntryPoint;
 
-    @Bean
-    public JWTTokenFilter jwtTokenFilter() {
-        return new JWTTokenFilter();
-    }
+
+    @Autowired
+    private JWTTokenFilter jwtTokenFilter;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -51,12 +50,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
-                .authorizeRequests().antMatchers("/**").permitAll()
+                .authorizeRequests()
+                .antMatchers("/api/public/**").permitAll()
+//                .antMatchers("/api/cart/**").hasAnyRole("CUSTOMER")
+                .antMatchers("/api/cart/**/**").hasAnyRole("ADMIN","CUSTOMER")
                 .anyRequest().authenticated()
                 .and().exceptionHandling()
-                .authenticationEntryPoint(jwtEntryPoint)
+//                .authenticationEntryPoint(jwtEntryPoint)
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }
